@@ -1,0 +1,114 @@
+{% load static wagtailuserbar %}
+{% load staticfiles %}
+{% load static %}
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>
+            {% block title %}
+                {% if self.seo_title %}{{ self.seo_title }}{% else %}{{ self.title }}{% endif %}
+            {% endblock %}
+            {% block title_suffix %}
+                {% with self.get_site.site_name as site_name %}
+                    {% if site_name %}- {{ site_name }}{% endif %}
+                {% endwith %}
+            {% endblock %}
+        </title>
+        <meta name="description" content="" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="icon" type="image/jpg" href="{% static 'icon.png' %}">
+        {# Global stylesheets #}
+        <!-- not using this now <link rel="stylesheet" type="text/css" href="{% static 'css/wag_photo.css' %}">-->
+
+        {% block extra_css %}
+        <meta charset="utf-8" />
+        <link rel="apple-touch-icon" sizes="76x76" href="{% static 'img/apple-icon.png' %}">
+        <link rel="icon" type="image/jpg" href="{% static 'img/my_icon.jpg' %}">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+      <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
+      <!--     Fonts and icons     -->
+        <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
+        <!-- CSS Files -->
+        <link href="{% static 'css/material-kit.css?v=2.0.5' %}" rel="stylesheet" />
+        <!-- CSS Just for demo purpose, don't include it in your project -->
+        <link href="{% static 'demo/demo.css' %}" rel="stylesheet" />
+        {% endblock %}
+    </head>
+
+    <body class="{% block body_class %}{% endblock %}">
+
+        {% block navbar %}
+              <div id="navbar">
+        <nav class="navbar navbar-transpatent navbar-color-on-scroll fixed-top navbar-expand-lg" role="navigation-demo">
+          <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-translate">
+              <a class="navbar-brand" href="#">Welcome To The To-Do-List</a>
+              <button class="navbar-toggler" type="button" data-toggle="collapse" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="navbar-toggler-icon"></span>
+                <span class="navbar-toggler-icon"></span>
+                <span class="navbar-toggler-icon"></span>
+              </button>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse">
+              <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                  <a href="#" class="nav-link">
+                    <i class="material-icons">add</i> Add a Task
+                  
+                  </a>
+                </li>
+                <li class="dropdown nav-item">
+                  <a href="#pablo" class=" dropdown-toggle nav-link" data-toggle="dropdown">
+                    <div class="profile-photo-small">
+                      <i class="material-icons">person</i>{{user}}
+                      
+                    </div>
+                  </a>
+                  <div class="dropdown-menu dropdown-menu-right">
+                    <h6 class="dropdown-header">Dropdown header</h6>
+                    <a href="#" class="nav-link">
+                      <i class="material-icons">exit_to_app</i> Logout
+                      
+                    </a>
+                    <a href="#pablo" class="dropdown-item">Settings and other stuff</a>
+                    <a href="#pablo" class="dropdown-item">Sign out</a>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+          </div>
+          <!-- /.container-->
+        </nav>
+
+          {% block head_container %}{% endblock %}
+    
+        <div class="container" style="max-height: 30%">
+          <div class="row" style="max-height: 30%">
+            <div class="col-md-8 ml-auto mr-auto">
+              <div class="brand">
+                <h1 style="color: black">{% block center_text %}{% endblock %}</h1>
+                <h3 style="color: black">{% block sub_center_text %}{% endblock %}</h3>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+        {% endblock %}
+        {% wagtailuserbar %}
+
+        {% block content %}{% endblock %}
+
+        {# Global javascript #}
+        <!--<script type="text/javascript" src="{% static 'js/wag_photo.js' %}"></script>-->
+
+        {% block extra_js %}
+            
+        {% endblock %}
+    </body>
+</html>

@@ -1,0 +1,6 @@
+db.sqlite3
+wag_photo/**/__pycache__
+photos/**/**/__pycache__
+.idea
+**/**/__pycache__
+r'^__pycache__$'
